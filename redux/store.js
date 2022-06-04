@@ -6,7 +6,7 @@ import reducerPayment from './reducers/reducerPayment';
 const rootReducers = combineReducers({
     courses: reducerCourses,
     cart: reducerCart,
-    payment: reducerPayment
+    payments: reducerPayment
 })
 
 const store = createStore(rootReducers)

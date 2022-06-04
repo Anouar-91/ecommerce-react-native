@@ -5,7 +5,6 @@ import store from './redux/store';
 import Landing from './screens/Landing';
 /*  import store from './reduxToolkit/redux' */
 import AppNav from './routes/AppNav'
-
 export default function App() {
   return (
     <Provider store={store}>

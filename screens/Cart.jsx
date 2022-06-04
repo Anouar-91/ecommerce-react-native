@@ -4,7 +4,8 @@ import {useSelector, useDispatch} from 'react-redux';
 import EmptyMsg from '../components/EmptyMsg'
 import CoursesInCart from '../components/CoursesInCart';
 import GlobalStyles from '../styles/GlobalStyles';
-import {removeCourseCart} from '../redux/actions/removeCourseCart'
+import {removeCourseCart} from '../redux/actions/removeCourseCart';
+import {addPayment} from '../redux/actions/actionPayment';
 
 
 const Cart = () => {
@@ -14,6 +15,11 @@ const Cart = () => {
   const handleDeleteToCart = (courseId) => {
     dispatch(removeCourseCart(courseId));
     alert(courseId)
+  }
+
+  const handlePayment = (courses, total )=> {
+    dispatch(addPayment(courses, total))
+    alert("paiment effectué")
   }
   return (
     <View style={styles.cartContainer}> 
@@ -37,7 +43,7 @@ const Cart = () => {
             Total: 
           <Text style={styles.totalPrice}>{carts.total.toFixed(2)}€</Text>
           </Text>
-          <TouchableOpacity onPress={() => alert("payer")}>
+          <TouchableOpacity onPress={() => handlePayment(carts.cartCourses, carts.total)}>
             <View style={styles.btnAddPayement}>
               <Text style={styles.btnAddPayementText}>Payer</Text>
             </View>

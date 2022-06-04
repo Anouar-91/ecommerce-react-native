@@ -1,23 +1,20 @@
 import React from "react"
 import { createStackNavigator } from '@react-navigation/stack';
-import Landing from "../screens/Landing";
-import CourseInfo from "../screens/CourseInfo";
-import Cart from "../screens/Cart";
+import Payment from "../screens/Payment";
 import GlobalStyles from "../styles/GlobalStyles";
 import { Item } from "react-navigation-header-buttons";
 import { MaterialHeaderButtons } from './MyHeaderButtons';
 
 
-const CoursesStackNavigator = createStackNavigator();
+const PaymentStackNavigator = createStackNavigator();
 
-const CoursesNavigator = () => {
+const PaymentNavigator = () => {
     return (
-        <CoursesStackNavigator.Navigator
+        <PaymentStackNavigator.Navigator
             screenOptions={({navigation}) => ({
                 headerStyle: {backgroundColor: GlobalStyles.green},
                 headerTitleStyle: { fontWeight: "bold" },
                 headerTintColor: GlobalStyles.white,
-
                 headerRight: () => (
                     <MaterialHeaderButtons>
                         <Item title="Panier" iconName="shopping-cart" onPress={() => navigation.navigate('Cart')}/>
@@ -30,24 +27,14 @@ const CoursesNavigator = () => {
                 ),
             })}
         >
-            <CoursesStackNavigator.Screen
-                name="Landing"
-                component={Landing}
-                options={{title:"Catalogue"}}
+            <PaymentStackNavigator.Screen
+                name="Payment"
+                component={Payment}
+                options={{title: "Mes achats"}}
             />
-            <CoursesStackNavigator.Screen
-                name="Details"
-                component={CourseInfo}
-                options={({ route }) => ({
-                    title: route.params.title
-                })}
-            />
-            <CoursesStackNavigator.Screen
-                name="Cart"
-                component={Cart}
-            />
-        </CoursesStackNavigator.Navigator>
+
+        </PaymentStackNavigator.Navigator>
     )
 }
 
-export default CoursesNavigator;
+export default PaymentNavigator;

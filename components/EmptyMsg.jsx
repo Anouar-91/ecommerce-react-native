@@ -2,10 +2,11 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import GlobalStyles from '../styles/GlobalStyles'
 
-const EmptyMsg = () => {
+const EmptyMsg = (props) => {
+  const msg = props.text ? props.text : "Panier vide"
   return (
     <View style={styles.container}>
-      <Text style={styles.msg}>Panier vide</Text>
+      <Text style={styles.msg}>{msg}</Text>
     </View>
   )
 }
