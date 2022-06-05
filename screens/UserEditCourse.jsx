@@ -24,7 +24,6 @@ const UserEditCourse = ({ route, navigation }) => {
     } else {
       dispatch(createCourse( title , desc, img, +price  ))
       navigation.navigate("Courses")
-
     }
   }
 
