@@ -1,5 +1,5 @@
 import PaidCourseModel from '../../data/PaidCourseModel'
-import {ADD_TO_CART, REMOVE_COURSE_CART, ADD_PAYMENT} from '../constants'
+import {ADD_TO_CART, REMOVE_COURSE_CART, ADD_PAYMENT, DELETE_COURSE} from '../constants'
 const initialState = {
    cartCourses: [],
    total: 0
@@ -31,6 +31,27 @@ const reducerCart = (state = initialState, action) => {
             }
         case ADD_PAYMENT: 
             return initialState
+
+        case DELETE_COURSE:
+            if(state.cartCourses.length > 0){
+                const index = state.cartCourses.findIndex(course => course.id === action.courseId)
+                const courseInfo = state.cartCourses[index]
+                console.log(courseInfo)
+                const newCartCourses2 = [...state.cartCourses];
+                newCartCourses2.splice(index, 1)
+        
+                return {
+                    ...state, 
+                    cartCourses: newCartCourses2,
+                    total: state.total - courseInfo.price
+                } 
+            }
+            else{
+                return {
+                    state
+                }
+            }
+ 
 
         default:
             return state;
